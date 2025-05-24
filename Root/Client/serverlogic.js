@@ -1,7 +1,8 @@
 const socket = io();
 
-function joinRoom(room) {
-  socket.emit("room", input.value);
+function joinRoom(room, callback) {
+  socket.emit("room", room);
+  callback();
 }
 let token;
 
@@ -63,7 +64,7 @@ let questionStore = [];
 
 function readyInc() {
   ready++;
-  if (ready > 0) {
+  if (ready > 1) {
     socket.emit("start");
     console.log("stert");
   }
@@ -99,8 +100,8 @@ socket.on("start", () => {
 
 socket.on("chooseQuestions", async () => {
   let questionSets = await getQuestionSets();
-  console.log(questionSets);
-  chooseSet(questionSets[0]._id);
+  // console.log(questionSets);
+  // chooseSet(questionSets[0]._id);
 });
 
 async function getQuestionSets() {
