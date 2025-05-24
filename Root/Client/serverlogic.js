@@ -12,6 +12,10 @@ function setOnRoomsCallback(callback) {
   onRoomsCallback = callback;
 }
 
+function attack() {
+  socket.emit("attack");
+}
+
 if (localStorage.getItem("token")) {
   token = localStorage.getItem("token");
   socket.emit("login", token);
@@ -102,6 +106,16 @@ socket.on("chooseQuestions", async () => {
   let questionSets = await getQuestionSets();
   // console.log(questionSets);
   // chooseSet(questionSets[0]._id);
+});
+
+let attackCallBack;
+
+function setAttackCallBack(callback) {
+  attackCallBack = callback;
+}
+
+socket.on("attack", () => {
+  attackCallBack();
 });
 
 async function getQuestionSets() {

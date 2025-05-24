@@ -4,7 +4,7 @@ import { Flashcard, Set } from "./logic.js";
 
 let currentQuestion;
 let currentPoints = 0;
-let currentHealth = 20;
+let currentHealth = 100;
 
 window.onload = () => {
   displayRandomQuestion();
@@ -53,6 +53,13 @@ function checkAnswer(question, user_answer) {
 
 const inputForm = document.querySelector("form");
 const answerInput = document.querySelector(".input-container input");
+const attackButton = document.querySelector(".attack");
+
+attackButton.addEventListener("click", () => {
+  if (currentPoints > 0) attack();
+  currentPoints--;
+  renderPoints();
+});
 
 const wrongAnswerText = document.querySelector(".wrong-answer");
 
@@ -105,3 +112,9 @@ inputForm.addEventListener("submit", (event) => {
     wrongAnswerText.classList.remove("invisible");
   }
 });
+
+setAttackCallBack(() => {
+  currentHealth = currentHealth - 10;
+  renderHealth();
+});
+renderHealth();

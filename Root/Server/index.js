@@ -84,6 +84,12 @@ io.on("connection", async (socket) => {
     );
   });
 
+  socket.on("attack", () => {
+    socket
+      .to(Array.from(socket.rooms).filter((r) => r !== socket.id))
+      .emit("attack");
+  });
+
   socket.on("start", () => {
     io.to(Array.from(socket.rooms).filter((r) => r !== socket.id)).emit(
       "start"
