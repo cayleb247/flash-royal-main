@@ -3,8 +3,18 @@ const socket = io();
 function joinRoom(room) {
   socket.emit("room", input.value);
 }
-
 let token;
+
+let onRoomsCallback;
+
+function setOnRoomsCallback(callback) {
+  onRoomsCallback = callback;
+}
+
+if (localStorage.getItem("token")) {
+  token = localStorage.getItem("token");
+  socket.emit("login", token);
+}
 
 async function signup(username, password, callback) {
   let response = await fetch("/api/signup", {
@@ -17,7 +27,7 @@ async function signup(username, password, callback) {
 
   let json = await response.json();
   token = json.token;
-  socket.emit("login", token);
+  localStorage.setItem("token", token);
   callback(json);
 }
 
@@ -32,18 +42,10 @@ async function login(username, password, callback) {
 
   let json = await response.json();
   token = json.token;
-
+  localStorage.setItem("token", token);
   socket.emit("login", token);
   callback(json);
 }
-
-login("test", "pas", () => {
-  createQuestionSet(
-    [{ question: "test", answer: "yes", pointValue: 10 }],
-    "History",
-    () => {}
-  );
-});
 
 let roomStore = [];
 
@@ -53,6 +55,7 @@ function getRooms() {
 
 socket.on("rooms", (rooms) => {
   roomStore = rooms;
+  onRoomsCallback();
 });
 
 let ready = 0;
@@ -127,13 +130,3 @@ async function chooseSet(id) {
 async function createRoom() {
   socket.emit("createRoom");
 }
-
-setTimeout(async () => {
-  console.log(roomStore);
-  if (!roomStore.length) {
-    createRoom();
-    return;
-  } else {
-    joinRoom(await getRooms()[0]);
-  }
-}, 100);

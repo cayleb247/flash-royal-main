@@ -4,7 +4,7 @@ const signupPassword = document.getElementById("password");
 
 signupForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  signup(signupUsername.value, signupPassword.value, () => {
+  login(signupUsername.value, signupPassword.value, () => {
     location.href = "menu.html";
   });
 
