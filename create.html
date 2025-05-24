@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="create-content">
+        <div class="flashcard-creation-header">
+            <h1>Create a Set</h1>
+            <div class="publish-button">Publish</div>
+        </div>
+        <div class="flashcard-creation-container">
+            <form action="">
+                <div class="flashcard-input">
+                    <input type="text" name="set-name" id="set-name">
+                    <label for="set-name">Set Name</label>
+                </div>
+                <div class="flashcard-creation">
+                    <div class="flashcard-input">
+                        <textarea name="term" id="term"></textarea>
+                        <label for="term">Term</label>
+                    </div>
+                    <div class="flashcard-input">
+                        <textarea name="definition" id="definition"></textarea>
+                        <label for="definition">Definition</label>
+                    </div>
+                    <div class="flashcard-input">
+                        <input type="number" id="value" name="value" min="1" max="9">
+                        <label for="value">Value</label>
+                    </div>
+                </div>
+            </form>
+            <div class="new-flashcard">+ New Flashcard</div>
+        </div>
+    </div>
+    <script type="module" src="create.js"></script>
+    
+</body>
+</html>
