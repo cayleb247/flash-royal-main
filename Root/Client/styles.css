@@ -56,6 +56,7 @@ header a {
     background-color: #1F1F1F;
     grid-template-columns: 1fr 1fr 6fr 2fr;
     grid-template-rows: 1fr 5fr 3fr 1fr;
+    gap: 0.5rem;
 }
 
 .login-container {
@@ -212,17 +213,27 @@ form input {
     border-bottom-right-radius: 1rem;
 }
 
-.health-container {
+.health-container-opponent {
+    height: 100%;
+    grid-column: 4 / 5;
+    grid-row: 1 / 2;
+    display: flex;
+    align-items: flex-end;
+}
+
+.health-container-user {
     height: 100%;
     grid-column: 4 / 5;
     grid-row: 3 / 4;
     display: flex;
     align-items: flex-end;
-    gap: 0.5rem;
 }
 
 .health-info {
-    
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
 }
 
 .healthbar {
@@ -233,8 +244,10 @@ form input {
 }
 
 .health {
+    height: 2rem;
+    width: 100%;
     background-color: green;
-
+    border-radius: 1rem;
 }
 
 /* Player Profiles */

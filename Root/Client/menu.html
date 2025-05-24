@@ -56,10 +56,40 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="serverlogic.js"></script>
     <script>
-      setOnRoomsCallback(() => {
-        console.log(getRooms());
-        // joinRoom()
-      });
+        function createRoomElement(name) {
+            const roomList = document.querySelector(".rooms-list");
+            // Create the main div
+            const roomDiv = document.createElement('div');
+            roomDiv.className = 'room';
+
+            // Create the paragraph element
+            const roomName = document.createElement('p');
+            roomName.className = 'room-name';
+            roomName.textContent = name;
+
+            // Create the button
+            const joinButton = document.createElement('button');
+            joinButton.textContent = 'Join Room';
+
+            joinButton.addEventListener("click", () => {
+                joinRoom(name); // Bear's function here
+            })
+
+            // Append elements
+            roomDiv.appendChild(roomName);
+            roomDiv.appendChild(joinButton);
+
+            // Append the roomDiv to the body or another container
+            roomList.appendChild(roomDiv);
+        }
+
+        setOnRoomsCallback(() => {
+            for (const roomName of getRooms()) {
+                createRoomElement(roomName);
+            }
+            // console.log(getRooms());
+            // // joinRoom()
+        });
     </script>
   </body>
 </html>
