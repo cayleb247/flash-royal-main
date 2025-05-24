@@ -288,28 +288,47 @@ form input {
     border-radius: 0.5rem;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
 }
 
 .attack, .defend, .special {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
     padding: 0.5rem;
-    border-radius: 1rem;
     color: white;
     cursor: pointer;
 }
 
 .attack {
-    background-color: red;
+    background-color: rgb(209, 49, 49);
+    border-bottom-left-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
 }
 
 .defend {
-    background-color: blue;
+    background-color: rgb(49, 54, 209);
 }
 
 .special {
-    background-color: yellow;
+    background-color: rgb(209, 209, 49);
     color: black;
+    border-bottom-right-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
 }
+
+/* Flashcard Deck */
+
+.flashcard-deck {
+    grid-row: 2 / 3;
+    grid-column: 3 / 4;
+    height: 100%;
+    width: 100%;
+}
+
+.
 
 /* Signup CSS */
 
