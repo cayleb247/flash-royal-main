@@ -213,7 +213,15 @@ form input {
     border-bottom-right-radius: 1rem;
 }
 
-.health-container {
+.health-container-opponent {
+    height: 100%;
+    grid-column: 4 / 5;
+    grid-row: 1 / 2;
+    display: flex;
+    align-items: flex-end;
+}
+
+.health-container-user {
     height: 100%;
     grid-column: 4 / 5;
     grid-row: 3 / 4;
