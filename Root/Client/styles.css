@@ -10,6 +10,44 @@ body {
     background-color: #1F1F1F;
 }
 
+/* Header */
+
+header {
+    box-sizing: border-box;
+    padding-left: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    background-color: #363535;
+    width: 100vw;
+    top: 0;
+}
+
+header h2 {
+    font-style: italic;
+}
+
+header a {
+    text-decoration: none;
+}
+
+.header-link {
+    box-sizing: border-box;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.header-links {
+    display: flex;
+}
+
+.header-link:hover {
+    background-color: #515151;
+}
+
+/* Play */
+
 #game-content {
     box-sizing: border-box;
     padding: 1rem;
@@ -301,12 +339,12 @@ form input {
     grid-row: 1 / 2;
     grid-column: 2 / 3;
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .publish-button {
@@ -416,6 +454,86 @@ input[type=number]::-webkit-outer-spin-button {
 /* Menu */
 
 #menu-content {
+    position: relative;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
+
+#menu-content h1 {
+    font-size: 4rem;
+}
+
+.rooms-container {
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: #484848;
+    gap: 1rem;
+}
+
+.rooms-container p {
+    font-style: italic;
+}
+
+.rooms-list {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
+    background-color: #363535;
+    border-radius: 1rem;
+    overflow: scroll;
+    gap: 0.5rem;
+}
+
+.room {
+    min-width: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    gap: 1rem;
+    background-color: #1F1F1F;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: solid #515151 1px;
+}
+
+.rooms-container button {
+    font-size: 0.75rem;
+    box-sizing: border-box;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    background-color: #005994;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.rooms-container button:hover {
+    background-color: #0071bd;
+}
+
+.room button {
+    box-sizing: border-box;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    background-color: #363535;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.room button:hover {
+    background-color: #676767;
+}
+
+
+
