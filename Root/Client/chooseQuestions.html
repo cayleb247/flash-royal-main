@@ -21,6 +21,10 @@
         location.href = "play.html";
       });
 
+      setTimeout(() => {
+        createRoom(() => {});
+      }, 100);
+
       async function loadQuestionSets() {
         try {
           let questionSets = await getQuestionSets();

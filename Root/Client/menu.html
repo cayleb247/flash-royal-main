@@ -22,28 +22,7 @@
           <h2>Rooms</h2>
           <p>find a room</p>
         </div>
-        <div class="rooms-list">
-          <div class="room">
-            <p class="room-name">Room Name</p>
-            <button>Join Room</button>
-          </div>
-          <div class="room">
-            <p class="room-name">Room Name</p>
-            <button>Join Room</button>
-          </div>
-          <div class="room">
-            <p class="room-name">Room Name</p>
-            <button>Join Room</button>
-          </div>
-          <div class="room">
-            <p class="room-name">Room Name</p>
-            <button>Join Room</button>
-          </div>
-          <div class="room">
-            <p class="room-name">Room Name</p>
-            <button>Join Room</button>
-          </div>
-        </div>
+        <div class="rooms-list"></div>
 
         <button
           onclick="createRoom(()=> {location.href='chooseQuestions.html'})"
@@ -56,40 +35,44 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="serverlogic.js"></script>
     <script>
-        function createRoomElement(name) {
-            const roomList = document.querySelector(".rooms-list");
-            // Create the main div
-            const roomDiv = document.createElement('div');
-            roomDiv.className = 'room';
+      function createRoomElement(name) {
+        const roomList = document.querySelector(".rooms-list");
+        // Create the main div
+        const roomDiv = document.createElement("div");
+        roomDiv.className = "room";
 
-            // Create the paragraph element
-            const roomName = document.createElement('p');
-            roomName.className = 'room-name';
-            roomName.textContent = name;
+        // Create the paragraph element
+        const roomName = document.createElement("p");
+        roomName.className = "room-name";
+        roomName.textContent = name;
 
-            // Create the button
-            const joinButton = document.createElement('button');
-            joinButton.textContent = 'Join Room';
+        // Create the button
+        const joinButton = document.createElement("button");
+        joinButton.textContent = "Join Room";
 
-            joinButton.addEventListener("click", () => {
-                joinRoom(name); // Bear's function here
-            })
-
-            // Append elements
-            roomDiv.appendChild(roomName);
-            roomDiv.appendChild(joinButton);
-
-            // Append the roomDiv to the body or another container
-            roomList.appendChild(roomDiv);
-        }
-
-        setOnRoomsCallback(() => {
-            for (const roomName of getRooms()) {
-                createRoomElement(roomName);
-            }
-            // console.log(getRooms());
-            // // joinRoom()
+        joinButton.addEventListener("click", () => {
+          console.log(name);
+          joinRoom(name, () => {
+            location.href = "chooseQuestions.html";
+          }); // Bear's function here
         });
+
+        // Append elements
+        roomDiv.appendChild(roomName);
+        roomDiv.appendChild(joinButton);
+
+        // Append the roomDiv to the body or another container
+        roomList.appendChild(roomDiv);
+      }
+
+      setOnRoomsCallback(() => {
+        console.log(getRooms());
+        for (const roomName of getRooms()) {
+          createRoomElement(roomName);
+        }
+        // console.log(getRooms());
+        // // joinRoom()
+      });
     </script>
   </body>
 </html>
