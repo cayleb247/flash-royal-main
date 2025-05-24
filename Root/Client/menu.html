@@ -53,7 +53,10 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="serverlogic.js"></script>
     <script>
-      setOnRoomsCallback(() => {});
+      setOnRoomsCallback(() => {
+        console.log(getRooms());
+        // joinRoom()
+      });
     </script>
   </body>
 </html>
