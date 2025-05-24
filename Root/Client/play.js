@@ -110,7 +110,6 @@ import { Flashcard, Set } from "./logic.js";
 let currentQuestion;
 let currentPoints = 0;
 let currentHealth = 20;
-let currentHealth = 20;
 
 window.onload = () => {
   displayRandomQuestion();
@@ -186,20 +185,6 @@ function renderPoints() {
   for (let i = 0; i < currentPoints; i++) {
     energyMeter[i].classList.remove("invisible");
   }
-}
-
-function renderHealth() {
-  const healthText = document.querySelector(".health-text");
-  healthText.textContent = `${currentHealth}%`;
-  const health = document.querySelector(".health");
-  health.style.width = `${currentHealth}%`;
-}
-
-function renderHealth() {
-  const healthText = document.querySelector(".health-text");
-  healthText.textContent = `${currentHealth}%`;
-  const health = document.querySelector(".health");
-  health.style.width = `${currentHealth}%`;
 }
 
 function renderHealth() {
