@@ -412,3 +412,10 @@ input[type=number]::-webkit-outer-spin-button {
     flex-direction: column;
     width: 100%;
 }
+
+/* Menu */
+
+#menu-content {
+    display: flex;
+    flex-direction: column;
+}
