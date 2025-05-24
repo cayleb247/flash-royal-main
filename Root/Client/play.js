@@ -39,10 +39,12 @@ const answerInput = document.querySelector(".input-container input")
 const wrongAnswerText = document.querySelector(".wrong-answer")
 
 function addPoints(value) {
+    console.log(value);
     currentPoints += value;
     if (currentPoints > 9) {
         currentPoints = 9;
     }
+    console.log(currentPoints);
 }
 
 function substractPoints(value) {
@@ -68,14 +70,13 @@ function incorrectAnswer() {
 
 
 inputForm.addEventListener("submit", (event) => {
-    console.log("hi");
     event.preventDefault();
     if (checkAnswer(currentQuestion, answerInput.value)) {
-        displayRandomQuestion();
         addPoints(currentQuestion.value);
         renderPoints();
         inputForm.reset();
         if (!wrongAnswerText.classList.contains("invisible")) wrongAnswerText.classList.add("invisible");
+        displayRandomQuestion();
     } else {
         inputForm.reset();
         wrongAnswerText.classList.remove("invisible");

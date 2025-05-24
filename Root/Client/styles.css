@@ -212,6 +212,31 @@ form input {
     border-bottom-right-radius: 1rem;
 }
 
+.health-container {
+    height: 100%;
+    grid-column: 4 / 5;
+    grid-row: 3 / 4;
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.health-info {
+    
+}
+
+.healthbar {
+    height: 2rem;
+    width: 100%;
+    border-radius: 1rem;
+    background-color: rgb(0, 63, 0);
+}
+
+.health {
+    background-color: green;
+
+}
+
 /* Player Profiles */
 
 .opponent-profile, .user-profile {
