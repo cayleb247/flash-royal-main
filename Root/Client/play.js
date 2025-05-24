@@ -4,7 +4,7 @@ import { Flashcard, Set } from "./logic.js";
 
 let currentQuestion;
 let currentPoints = 0;
-let currentHealth = 100;
+let currentHealth = 20;
 
 window.onload = () => {
     displayRandomQuestion();
@@ -64,6 +64,13 @@ function renderPoints() {
     }
 }
 
+function renderHealth() {
+    const healthText = document.querySelector(".health-text");
+    healthText.textContent = `${currentHealth}%`;
+    const health = document.querySelector(".health");
+    health.style.width = `${currentHealth}%`;
+}
+
 function incorrectAnswer() {
 
 }
@@ -78,8 +85,10 @@ inputForm.addEventListener("submit", (event) => {
         if (!wrongAnswerText.classList.contains("invisible")) wrongAnswerText.classList.add("invisible");
         displayRandomQuestion();
     } else {
+        incorrectAnswer();
         inputForm.reset();
         wrongAnswerText.classList.remove("invisible");
+
     }
 })
 
