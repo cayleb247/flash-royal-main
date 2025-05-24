@@ -319,6 +319,20 @@ form input {
     border-top-right-radius: 0.5rem;
 }
 
+
+.attack:hover {
+    background-color: rgb(163, 39, 39);
+}
+
+.defend:hover {
+    background-color: rgb(37, 66, 152);
+}
+
+.special:hover {
+    background-color: rgb(163, 157, 39);
+}
+
+
 /* Flashcard Deck */
 
 .flashcard-deck {
@@ -326,9 +340,70 @@ form input {
     grid-column: 3 / 4;
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.
+.flashcard-deck p {
+    margin-top: -2rem;
+}
+
+.card-stack {
+    position: relative;
+    width: 20rem;
+    height: 12rem;
+    margin: 50px auto;
+  }
+  
+.card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background-color: #363535;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+  
+.card-bottom {
+    top: 10px;
+    left: 10px;
+    z-index: 0;
+    background-color: #2e2e2e;
+}
+  
+.card-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: #474747;
+}
+
+.card-top h2 {
+    font-style: italic;
+}
+  
+
+.flashcard-top {
+    border-radius: 1rem;
+    background-color: #484848;
+    height: 10rem;
+    width: 16rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
 
 /* Signup CSS */
 
