@@ -65,7 +65,6 @@ io.on("connection", async (socket) => {
     }
   });
   socket.on("createRoom", () => {
-    console.log(socket.data.username);
     if (!socket.data.username) return;
     socket.rooms.forEach((room) => {
       if (room !== socket.id) {

@@ -55,7 +55,7 @@ function getRooms() {
 
 socket.on("rooms", (rooms) => {
   roomStore = rooms;
-  onRoomsCallback();
+  if (onRoomsCallback) onRoomsCallback();
 });
 
 let ready = 0;
@@ -81,11 +81,20 @@ socket.on("questions", (questions) => {
   console.log(questions);
   readyInc();
   questionStore.push(...questions);
+  localStorage.setItem("questions", JSON.stringify(questionStore));
 });
 
+let onStartCallback;
+
+function setOnStartCallback(callback) {
+  onStartCallback = callback;
+}
+
 socket.on("start", () => {
-  console.log("here we go");
-  socket.emit("answer", questionStore[0].answer);
+  // console.log("here we go");
+  // socket.emit("answer", questionStore[0].answer);
+  localStorage.setItem("questions", JSON.stringify(questionStore));
+  onStartCallback();
 });
 
 socket.on("chooseQuestions", async () => {
@@ -95,17 +104,21 @@ socket.on("chooseQuestions", async () => {
 });
 
 async function getQuestionSets() {
-  let response = await fetch("/api/questionSets", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  if (token) {
+    let response = await fetch("/api/questionSets", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-  let json = await response.json();
+    let json = await response.json();
 
-  return json;
+    return json;
+  } else {
+    setTimeout(() => getQuestionSets(), 100);
+  }
 }
 
 async function createQuestionSet(questions, name, callback) {
@@ -127,6 +140,7 @@ async function chooseSet(id) {
   socket.emit("chooseSet", id);
 }
 
-async function createRoom() {
+async function createRoom(callback) {
   socket.emit("createRoom");
+  callback();
 }

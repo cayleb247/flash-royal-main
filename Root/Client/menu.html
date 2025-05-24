@@ -44,11 +44,14 @@
             <button>Join Room</button>
           </div>
         </div>
-        <button>Create Room</button>
+
+        <button
+          onclick="createRoom(()=> {location.href='chooseQuestions.html'})"
+        >
+          Create Room
+        </button>
       </div>
     </div>
-
-    <button onclick="createRoom()">Create Room</button>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="serverlogic.js"></script>

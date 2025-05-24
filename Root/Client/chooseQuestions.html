@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <select id="questionSetSelect">
+        <option value="">Select a question set...</option>
+      </select>
+      <button type="button" id="selectButton" disabled>
+        Select Question Set
+      </button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="serverlogic.js"></script>
+    <script>
+      setOnStartCallback(() => {
+        location.href = "play.html";
+      });
+
+      async function loadQuestionSets() {
+        try {
+          let questionSets = await getQuestionSets();
+          const select = document.getElementById("questionSetSelect");
+
+          // Clear existing options except the default one
+          select.innerHTML =
+            '<option value="">Select a question set...</option>';
+
+          // Add question sets as options
+          if (questionSets && questionSets.length > 0) {
+            questionSets.forEach((set) => {
+              const option = document.createElement("option");
+              option.value = set._id;
+              option.textContent = set.name;
+              select.appendChild(option);
+            });
+          } else {
+            chooseSet("68321a1ce50cfe8d600902de");
+          }
+        } catch (error) {
+          console.error("Error loading question sets:", error);
+          const select = document.getElementById("questionSetSelect");
+          select.innerHTML =
+            '<option value="">Error loading question sets</option>';
+        }
+      }
+
+      // Handle selection change
+      document
+        .getElementById("questionSetSelect")
+        .addEventListener("change", function () {
+          const selectButton = document.getElementById("selectButton");
+          selectButton.disabled = !this.value;
+        });
+
+      // Handle button click
+      document
+        .getElementById("selectButton")
+        .addEventListener("click", function () {
+          const selectedId = document.getElementById("questionSetSelect").value;
+          if (selectedId) {
+            chooseSet(selectedId);
+          }
+        });
+
+      loadQuestionSets();
+    </script>
+  </body>
+</html>
