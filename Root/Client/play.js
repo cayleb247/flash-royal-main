@@ -1,8 +1,16 @@
 import { Flashcard, Set } from "./logic.js";
+
+// Setup
+
 let currentQuestion;
+let currentPoints = 0;
+let currentHealth = 100;
+
 window.onload = () => {
     displayRandomQuestion();
 }
+
+const energyMeter = document.querySelectorAll(".energy-meter > *")
 
 let questionOne = new Flashcard("What's the color of the sky", "Blue", 1);
 let questionTwo = new Flashcard("What's Bear Tyree's real name", "Trinnean", 9);
@@ -30,11 +38,42 @@ const answerInput = document.querySelector(".input-container input")
 
 const wrongAnswerText = document.querySelector(".wrong-answer")
 
+function addPoints(value) {
+    currentPoints += value;
+    if (currentPoints > 9) {
+        currentPoints = 9;
+    }
+}
+
+function substractPoints(value) {
+    if (!((currentPoints -= value) < 0)) {
+        currentPoints -= value;
+    }
+}
+
+function renderPoints() {
+    for (const energy of energyMeter) {
+        if (!energy.classList.contains("invisible")) {
+            energy.classList.add("invisible");
+        }
+    }
+    for (let i=0;i<currentPoints;i++) {
+        energyMeter[i].classList.remove("invisible");
+    }
+}
+
+function incorrectAnswer() {
+
+}
+
+
 inputForm.addEventListener("submit", (event) => {
     console.log("hi");
     event.preventDefault();
     if (checkAnswer(currentQuestion, answerInput.value)) {
         displayRandomQuestion();
+        addPoints(currentQuestion.value);
+        renderPoints();
         inputForm.reset();
         if (!wrongAnswerText.classList.contains("invisible")) wrongAnswerText.classList.add("invisible");
     } else {
@@ -42,3 +81,4 @@ inputForm.addEventListener("submit", (event) => {
         wrongAnswerText.classList.remove("invisible");
     }
 })
+

@@ -165,7 +165,7 @@ form input {
     grid-template-columns: repeat(9, 1fr);
     height: 2rem;
     width: 75%;
-    background-color: rgb(169, 169, 0);
+    background-color: rgb(115, 115, 0);
     border: none;
     border-radius: 1rem;
     gap: 0.25rem;
