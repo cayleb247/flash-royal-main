@@ -1,0 +1,30 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "workspaces": [
+    "worker"
+  ],
+  "dependencies": {
+    "@opennextjs/cloudflare": "^1.2.1",
+    "@prisma/adapter-d1": "^6.9.0",
+    "@prisma/client": "^6.9.0",
+    "jose": "^6.0.11",
+    "next": "15.3.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.3"
+  }
+}

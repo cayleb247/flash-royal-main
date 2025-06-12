@@ -14,3 +14,7 @@ binding = "ASSETS"
 binding = "DB"
 database_name = "flash-royale-db"
 database_id = "68ccf195-5e42-40bf-a166-7a9b62387899"
+
+[[r2_buckets]]
+bucket_name = "flash-royale-cache"
+binding = "NEXT_INC_CACHE_R2_BUCKET"

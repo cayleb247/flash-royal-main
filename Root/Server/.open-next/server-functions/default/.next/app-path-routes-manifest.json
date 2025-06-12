@@ -1,0 +1,8 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/(game)/menu/page": "/menu",
+  "/create/page": "/create",
+  "/page": "/",
+  "/(auth)/login/page": "/login",
+  "/(auth)/signup/page": "/signup"
+}
